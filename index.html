@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Ikigai — Dani (The Builder-Teacher)</title>
+<meta name="description" content="My interactive Ikigai chart — what I love, what I'm good at, what the world needs, and what I get paid for.">
+<meta property="og:title" content="My Ikigai — Dani (The Builder-Teacher)">
+<meta property="og:description" content="My interactive Ikigai chart — what I love, what I'm good at, what the world needs, and what I get paid for.">
+<meta property="og:type" content="website">
+<style>
+  html, body, #root { margin: 0; padding: 0; min-height: 100vh; background: #0F0F14; }
+  * { box-sizing: border-box; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const { useState } = React;
+
+const C = {
+love: “#E85D75”, good: “#F2A93B”, paid: “#3B82F6”, need: “#10B981”,
+passion: “#F28C50”, mission: “#5EEAD4”, profession: “#A78BFA”, vocation: “#60A5FA”,
+ikigai: “#FBBF24”, bg: “#0F0F14”, text: “#E8E6E1”, muted: “#8A8780”, card: “#1A1A22”,
+};
+
+const DATA = {
+love: {
+label: “What I LOVE”, color: C.love, emoji: “❤️‍🔥”,
+items: [
+{ t: “Teaching & mentoring students hands-on”, e: “7 years at Dominican, 90 NPS at Make School, open-source curriculum at @Tech-at-DU, reveal-md lesson plans with emoji-prefixed agendas” },
+{ t: “Building distributed infrastructure from scratch”, e: “4-node Docker Swarm across Chicago/Seattle/LA/NY + France watchdog, CapRover portal, Prometheus/Grafana/Loki full-stack observability” },
+{ t: “Hardware tinkering — ESP32, XIAO nRF52, ZimaBoard, Ender 3”, e: “BumpBand firmware prototyping (BLE+NFC hybrid), droxeybot 3D printer, Arduino experiments, physical hardware lab at Make School” },
+{ t: “AI agent systems — deploying, securing, orchestrating”, e: “OpenClaw security-maximal deployment with Squid proxy + Docker sandboxing, Ansible monitoring roles, 875-line observability role” },
+{ t: “Prompt engineering & shaping LLM behavior”, e: “Created PRISM v2.2 methodology (24K char system prompt), token optimization research (38% reduction), progressive autonomy strategies from Anthropic research” },
+{ t: “Organizing hackathons & building virtual worlds”, e: “Week-long hackathons via Tech at DU, WorkAdventure + LiveKit for 50 concurrent users, custom pixel-art icons, security-hardened CapRover one-click apps” },
+{ t: “Open source tooling & DevOps automation”, e: “143 GitHub repos, 769 stars, 315 followers, CapRover one-click apps for WorkAdventure, awesome-teachcode” },
+{ t: “Tarot, astrology & spiritual practice”, e: “Daily draws with natal chart integration (Sag↑ Cancer☉ Scorpio☽), sexual tarot (Manera deck), past/present/future spreads, deep 1st house stellium analysis” },
+{ t: “Craft cocktails & culinary exploration”, e: “Dark espresso martini reverse-engineered from Cucina 38, Licor 43 Chocolate variant optimization, RAW rolling papers expertise” },
+{ t: “The Belize dream — Ambergris Caye island life”, e: “Property research, QRP residency program analysis, Mudi travel router + Starlink for remote work, detailed relocation planning” },
+{ t: “Gaming & playful tech”, e: “Pokémon GO search filter mastery (complete 2026 cheat sheet), WorkAdventure 16-bit virtual spaces, gamified student engagement” },
+{ t: “Lifestyle exploration & human connection”, e: “Swinger lifestyle, BumpBand born from ‘tech that works at the pool — no phone required’, belief that technology should connect not isolate” },
+{ t: “macOS power-user automation”, e: “Expert Hazel developer — binary plist predicate debugging, complex file organization rule systems, Aiphone intercom setup” },
+{ t: “Optimizing tools to their absolute limit”, e: “Claude Code config: 5-layer CLAUDE.md architecture, token-efficient prompts, rules/skills/hooks system, progressive autonomy tiers, settings.json allowedTools” },
+],
+},
+good: {
+label: “What I’m GOOD AT”, color: C.good, emoji: “🔧”,
+items: [
+{ t: “22+ years full-stack engineering across 10+ languages”, e: “Python, Go, C#, PHP, Django, .NET, React, Node, Bash — LinkedIn testimonials cite ‘picks up abandoned codebases in unfamiliar stacks and ships’” },
+{ t: “Docker Swarm architecture & container orchestration”, e: “4×8GB nodes with placement constraints, overlay networking, CapRover app deployments, volume management, service health checks” },
+{ t: “Security auditing & defense-in-depth hardening”, e: “25-finding Go audit (grain-exporter: 54 test functions, 1240 lines of test code), OpenClaw hardening (capability dropping, Squid egress proxy, sandbox isolation), WorkAdventure security scan” },
+{ t: “Full-stack observability engineering”, e: “Prometheus + Grafana + Loki deployment guides, Promtail agent configs per node, node_exporter + cAdvisor, 7 alert rules, firewall-restricted metric endpoints, restic→B2 backup orchestration” },
+{ t: “Hardware prototyping — firmware to product design”, e: “BumpBand: XIAO nRF52840 + BLE 5.0 + NFC hybrid, accelerometer bump detection, magnetic pogo-pin charging, 3 SKU tiers ($49/$79/$89), resort partnership channel strategy” },
+{ t: “Translating complex tech into teachable curriculum”, e: “Docker/DevOps (Bash→containers→compose→swarm), Go course (types→templates→files→MakeUtility), Web Security (social eng→server vulns→crypto→CTF), prefix trees with step-by-step trace walkthroughs” },
+{ t: “Patent-holder & product inventor”, e: “Live streaming patent (2014) — predicted Facebook Live/Twitch/YouTube interaction patterns. FrameBuzz, IMAX rebrand, Washington Commanders NFL app” },
+{ t: “AI toolchain mastery — from prompts to agents”, e: “PRISM methodology (example-driven > adjective-driven), Claude Code 5-layer config architecture, progressive autonomy tiers, OpenClaw skill development, AI avatar pipeline design” },
+{ t: “Curriculum-as-product design”, e: “FieldOps Django job simulator (8 tickets, PR-based grading, Skool platform), backlog with acceptance criteria tighter than most actual companies, $997 cohort pricing model” },
+{ t: “Resume writing & interview system design”, e: “Created 12-question scored interview rubrics with make-or-break analysis, rewrote resumes that reposition 25-year careers for new roles, candidate strength/risk assessment frameworks” },
+{ t: “Writing voice that actually engages”, e: “‘Ship all the things!’ energy, coach-like directness, emoji headers, active verbs, curiosity-driven vibe — consistently across 7 years of course materials and GitHub READMEs” },
+],
+},
+paid: {
+label: “What I Can Be PAID FOR”, color: C.paid, emoji: “💰”,
+items: [
+{ t: “CS Professor — Dominican University of California”, e: “Applied Computer Science bachelor’s program (being closed), 7 years of accumulated content: lectures, live coding demos, transcripts, GitHub repos, Google Slides” },
+{ t: “CTO — technical leadership & architecture”, e: “22+ years shipping production systems, distributed infrastructure design, team technical direction, patent portfolio” },
+{ t: “Online courses from 7 years of teaching content”, e: “AI avatar pipeline (ElevenLabs voice + HeyGen/MuseTalk video), RAG over transcripts for interactive tutoring, Teachable/Podia distribution, $130-270/mo tooling → break-even at 5-10 sales” },
+{ t: “SaaS: Team Vault (developer knowledge management)”, e: “5-capability bundle: web capture + markdown conversion + GitHub integration + prompt injection firewall + MCP gateway. Market at intersection of $6.4B dev tools + $13.7B knowledge mgmt + $7B AI agent infra” },
+{ t: “Hardware: BumpBand (waterproof contact exchange)”, e: “~$25 BOM, 3 SKU tiers, resort/event partnership channel, NFC fallback for non-owners, companion app for contact management — ‘people I’ve met’ timeline” },
+{ t: “FieldOps job simulator cohorts on Skool”, e: “Django + HTMX curriculum, PR-based grading, $997-1,497/cohort × 8-15 students = $48K-$132K/yr. Hybrid model: cohort fee + $99/mo alumni access” },
+{ t: “Infrastructure consulting (Docker/DevOps/monitoring)”, e: “CapRover deployment expertise, full observability stack design, security hardening, backup orchestration — the entire stack I run daily” },
+{ t: “AI agent deployment & security services”, e: “OpenClaw defense-in-depth patterns, security audit methodology (25-finding audits), sandbox isolation, egress filtering, DM pairing code systems” },
+{ t: “Patent licensing — live streaming technology”, e: “Predicted live streaming interaction patterns in 2014 before Facebook Live, Twitch interactive, and YouTube existed in current form” },
+{ t: “Prompt engineering consulting”, e: “PRISM methodology, token optimization (38% reduction with maintained accuracy), Claude Code configuration architecture, progressive autonomy design” },
+{ t: “Technical interview design & hiring consultation”, e: “Scored rubrics with make-or-break analysis, LinkedIn/resume deep-dive methodology, candidate risk assessment, role-specific question banks” },
+],
+},
+need: {
+label: “What The World NEEDS”, color: C.need, emoji: “🌍”,
+items: [
+{ t: “Practical CS education that ships real products”, e: “My courses end with deployed apps, not toy projects. Docker course capstone: ‘Dockerize a codebase and deploy on your own server.’ CTF challenges, not multiple choice.” },
+{ t: “Safe, self-hosted AI agent infrastructure patterns”, e: “OpenClaw’s security posture is terrible by default. My defense-in-depth deployment guide fills a gap nobody else is documenting — and the open-source world needs it.” },
+{ t: “Developer knowledge management for AI-native teams”, e: “No product bundles capture + conversion + security + MCP gateway. Teams are duct-taping Karakeep + Firecrawl + custom scripts. Team Vault solves this.” },
+{ t: “Hardware that creates human connection without screens”, e: “BumpBand: two people at a pool, no phones, bump wrists, contacts exchanged. Technology that facilitates face-to-face connection instead of replacing it.” },
+{ t: “Accessible DevOps education beyond Big Tech gatekeeping”, e: “My Docker course teaches students to deploy on $25/yr VPS instances, not $500/mo AWS setups. RackNerd + CapRover = production infrastructure any student can afford.” },
+{ t: “Secure-by-default deployment templates for open source”, e: “My CapRover one-click apps include security hardening, credential rotation, firewall rules, health checks. Most community templates ship with default passwords and open ports.” },
+{ t: “Educators monetizing content without platform dependency”, e: “University closing my program? My 7 years of content becomes MY asset via AI avatars + online courses. A model other professors need but don’t know exists.” },
+{ t: “Bridging tutorials and production systems”, e: “The gap between ‘Hello World Docker’ and ‘distributed Swarm with observability’ is enormous. My curriculum walks students across that gap with real infrastructure.” },
+{ t: “AI tool optimization that’s actually documented”, e: “My PRISM methodology, Claude Code config architecture, token efficiency research — this is knowledge most power users develop privately but never share.” },
+{ t: “Hiring processes that assess real capability”, e: “My interview rubrics measure transferable skills, not keyword bingo. The SaaS-gap analysis for the Hasbro candidate is what hiring should look like everywhere.” },
+],
+},
+};
+
+const INTERSECTIONS = [
+{ key: “passion”, label: “PASSION”, between: [“love”, “good”], color: C.passion,
+insight: “Building and teaching infrastructure isn’t a job — it’s my craft. I deploy a 4-city Docker Swarm for fun, then write the curriculum that teaches students to do it. I reverse-engineer espresso martini recipes with the same systematic rigor I apply to security audits. The common thread: I’m compulsively driven to understand systems deeply and then optimize them to their limit — whether that system is a container orchestrator, a tarot spread, or a Claude Code configuration.”,
+evidence: “WorkAdventure LiveKit migration (3 versions, each more hardened) • PRISM v2.2 evolved through 5+ iterations • BumpBand architecture refined from ESP32 to XIAO nRF52840 based on BLE+NFC hybrid analysis • Espresso martini: 3 recipe iterations from base to Cucina 38 reverse-engineer to Licor 43 Chocolate variant”
+},
+{ key: “mission”, label: “MISSION”, between: [“love”, “need”], color: C.mission,
+insight: “Making complex technology human. My hackathons put students in a video game world to code together. BumpBand replaces phone fumbling at a pool with a wrist bump. My courses anchor every topic to a destination project so students always know where they’re headed. My tarot readings blend astrological precision with practical advice (‘not yet — let it blend longer’). Everything I love doing is in service of connection: person to person, person to machine, student to mastery.”,
+evidence: “‘Ship all the things!’ teaching philosophy • WorkAdventure: ‘16-bit virtual space to hold student interest longer’ • BumpBand: ‘tech that works at the pool — no phone required’ • Course design: ‘every topic links to the final project so you can see where you’re headed’”
+},
+{ key: “profession”, label: “PROFESSION”, between: [“good”, “paid”], color: C.profession,
+insight: “I’m the rare engineer who can architect a distributed Swarm, security-audit the Go codebase running on it, write the Ansible playbook that monitors it, prototype the hardware that connects to it, design the curriculum that teaches it, AND create the interview rubric that hires the next person to maintain it. That stack of capabilities isn’t a resume — it’s a moat. Most people specialize. I went wide AND deep across hardware, software, infrastructure, education, and AI. The LinkedIn testimonials say it: ‘picks up abandoned codebases in unfamiliar stacks and ships.’”,
+evidence: “UC Berkeley → industry (FrameBuzz patent, IMAX, NFL) → Make School (90 NPS) → Dominican (7 years) • 143 repos across Python, Go, C#, PHP, Django, .NET, React, Node, Bash • grain-exporter: 54 test functions, 1240 lines of test code, Dockerized, MIT licensed • FieldOps: production-quality Django starter with backlog ‘tighter than most actual companies’”
+},
+{ key: “vocation”, label: “VOCATION”, between: [“paid”, “need”], color: C.vocation,
+insight: “Every product I’m building solves a gap I’ve personally lived. Team Vault exists because I couldn’t save interesting web content for my repos safely. BumpBand exists because I wanted to exchange contacts at the pool without a phone. FieldOps exists because my students needed a bridge between tutorials and production. Online courses exist because my university is closing my program. I’m not chasing trends — I’m scratching decade-old itches with the full weight of 22 years of engineering behind them.”,
+evidence: “Team Vault: ‘I have trouble saving all the interesting stuff I find for my project repositories’ • BumpBand: born from my resort experience • FieldOps: ‘No Django starter app in the repo. Students will burn Week 0-1 on boilerplate.’ • Online courses: ‘My university is closing my program. I have 7 years of content.’”
+},
+];
+
+const IKIGAI = {
+niche: “The Builder-Teacher”,
+tagline: “I build production systems, harden them, teach others to ship their own — and do it from the pool in Belize.”,
+description: “My niche sits at an intersection almost nobody occupies. I can solder an ESP32, deploy a Docker Swarm across 4 cities, security-audit a Go codebase, read a natal chart with technical precision, optimize Claude’s behavior at the token level, prototype a hardware product with 3 SKU tiers and resort partnership strategy, reverse-engineer an espresso martini recipe, and then turn ALL of it into a course that a student can actually follow. I’m not an academic who theorizes. I’m not a builder who hoards knowledge. I’m not a lifestyle optimizer who doesn’t ship. I’m all three — and I’ve got the patent, the 143 repos, the 7 years of curriculum, and the Ambergris Caye property deed to prove it.”,
+factors: [
+“Hardware + Software + Infrastructure + Education + AI + Prompt Engineering — almost nobody spans all six”,
+“22 years shipping code + 7 years teaching it + patent portfolio = a content library and credibility stack most educators would kill for”,
+“I prototype at the edges (BumpBand, OpenClaw agents, AI avatars) and teach from the center (Docker, Go, Security, Django)”,
+“PRISM methodology + Claude Code 5-layer config + progressive autonomy = I don’t just use AI tools, I engineer their behavior”,
+“Property in Belize + distributed infrastructure + remote curriculum = I’m building a location-independent tech empire, not just a career”,
+“Every product solves MY problem first (Team Vault, BumpBand, FieldOps, online courses) — founder-market fit is absolute”,
+“My writing voice (‘Ship all the things!’) is genuinely distinctive — a brand asset, not just a personality trait”,
+“I interview-prep candidates AND build the Django starter apps AND deploy the infrastructure AND teach the curriculum — I’m the full stack of a tech education company in one person”,
+],
+};
+
+// ==================== COMPONENTS ====================
+
+function Diagram({ active, setActive }) {
+const s = 420, cx = s/2, r = 110;
+const off = { love: {x:-52,y:-52}, good: {x:52,y:-52}, paid: {x:52,y:52}, need: {x:-52,y:52} };
+
+return (
+<svg viewBox={`0 0 ${s} ${s}`} style={{width:“100%”,maxWidth:420,margin:“0 auto”,display:“block”}}>
+<defs>
+{Object.entries(DATA).map(([k,d]) => (
+<radialGradient key={k} id={`g-${k}`}>
+<stop offset="0%" stopColor={d.color} stopOpacity="0.35"/>
+<stop offset="100%" stopColor={d.color} stopOpacity="0.08"/>
+</radialGradient>
+))}
+<radialGradient id="g-ctr"><stop offset="0%" stopColor={C.ikigai} stopOpacity="0.9"/><stop offset="100%" stopColor={C.ikigai} stopOpacity="0.2"/></radialGradient>
+<filter id="gl"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+{Object.entries(DATA).map(([k,d]) => {
+const o = off[k], a = active === k;
+return (<g key={k} onClick={() => setActive(active===k?null:k)} style={{cursor:“pointer”}}>
+<circle cx={cx+o.x} cy={cx+o.y} r={r} fill={`url(#g-${k})`} stroke={d.color} strokeWidth={a?2.5:1} strokeOpacity={a?1:0.4} filter={a?“url(#gl)”:undefined}/>
+<text x={cx+o.x*2.2} y={cx+o.y*2.2} fill={d.color} fontSize=“11” fontWeight=“700” textAnchor=“middle” dominantBaseline=“middle” style={{fontFamily:“monospace”,letterSpacing:“0.05em”}}>{d.emoji} {d.label.split(” “).slice(-1)[0]}</text>
+</g>);
+})}
+{INTERSECTIONS.map(i => {
+const o1=off[i.between[0]], o2=off[i.between[1]], mx=cx+(o1.x+o2.x)/2, my=cx+(o1.y+o2.y)/2, a=active===i.key;
+return (<g key={i.key} onClick={() => setActive(active===i.key?null:i.key)} style={{cursor:“pointer”}}>
+<text x={mx} y={my} fill={i.color} fontSize=“8.5” fontWeight=“600” textAnchor=“middle” dominantBaseline=“middle” style={{fontFamily:“monospace”,letterSpacing:“0.08em”}} opacity={a?1:0.7}>{i.label}</text>
+</g>);
+})}
+<g onClick={() => setActive(active===“ikigai”?null:“ikigai”)} style={{cursor:“pointer”}}>
+<circle cx={cx} cy={cx} r={28} fill="url(#g-ctr)" filter="url(#gl)"/>
+<text x={cx} y={cx-5} fill=”#0F0F14” fontSize=“9” fontWeight=“800” textAnchor=“middle” style={{fontFamily:“monospace”}}>IKIGAI</text>
+<text x={cx} y={cx+7} fill=”#0F0F14” fontSize=“6.5” fontWeight=“600” textAnchor=“middle” style={{fontFamily:“monospace”}} opacity=“0.8”>Builder-Teacher</text>
+</g>
+</svg>
+);
+}
+
+function Panel({ section }) {
+if (!section) return <div style={{padding:“32px 24px”,textAlign:“center”,color:C.muted,fontFamily:“monospace”,fontSize:13}}>{“←”} Tap any circle or label to explore</div>;
+
+if (section === “ikigai”) {
+return (<div style={{padding:“24px”,animation:“fi 0.3s ease”}}>
+<div style={{fontSize:11,fontWeight:700,color:C.ikigai,fontFamily:“monospace”,letterSpacing:“0.12em”,marginBottom:4}}>MY NICHE IN THE WORLD</div>
+<div style={{fontSize:26,fontWeight:800,color:C.text,marginBottom:8,lineHeight:1.1}}>{IKIGAI.niche}</div>
+<div style={{fontSize:14,color:C.ikigai,fontWeight:600,marginBottom:16,fontStyle:“italic”}}>”{IKIGAI.tagline}”</div>
+<div style={{fontSize:13,color:C.text,lineHeight:1.7,marginBottom:20,opacity:0.85}}>{IKIGAI.description}</div>
+<div style={{fontSize:10,fontWeight:700,color:C.muted,fontFamily:“monospace”,letterSpacing:“0.1em”,marginBottom:10}}>WHAT MAKES THIS RARE ({IKIGAI.factors.length} FACTORS)</div>
+{IKIGAI.factors.map((f,i) => (
+<div key={i} style={{fontSize:12,color:C.text,opacity:0.8,padding:“8px 12px”,marginBottom:6,background:“rgba(251,191,36,0.06)”,borderLeft:`2px solid ${C.ikigai}`,borderRadius:“0 6px 6px 0”,lineHeight:1.5}}>{f}</div>
+))}
+</div>);
+}
+
+const inter = INTERSECTIONS.find(i => i.key === section);
+if (inter) {
+return (<div style={{padding:“24px”,animation:“fi 0.3s ease”}}>
+<div style={{fontSize:11,fontWeight:700,color:inter.color,fontFamily:“monospace”,letterSpacing:“0.12em”,marginBottom:4}}>{inter.label}</div>
+<div style={{fontSize:10,color:C.muted,fontFamily:“monospace”,marginBottom:16}}>{DATA[inter.between[0]].label} ∩ {DATA[inter.between[1]].label}</div>
+<div style={{fontSize:14,color:C.text,lineHeight:1.8,padding:“16px”,background:`${inter.color}14`,borderRadius:8,borderLeft:`3px solid ${inter.color}`,marginBottom:16}}>{inter.insight}</div>
+<div style={{fontSize:10,fontWeight:700,color:C.muted,fontFamily:“monospace”,letterSpacing:“0.1em”,marginBottom:8}}>EVIDENCE</div>
+<div style={{fontSize:11,color:C.text,opacity:0.7,lineHeight:1.6,padding:“12px”,background:`${inter.color}0A`,borderRadius:6}}>{inter.evidence}</div>
+</div>);
+}
+
+const d = DATA[section];
+return (<div style={{padding:“24px”,animation:“fi 0.3s ease”}}>
+<div style={{fontSize:11,fontWeight:700,color:d.color,fontFamily:“monospace”,letterSpacing:“0.12em”,marginBottom:4}}>{d.emoji} {d.label.toUpperCase()}</div>
+<div style={{fontSize:10,color:C.muted,fontFamily:“monospace”,marginBottom:16}}>{d.items.length} items sourced from 70+ conversations</div>
+{d.items.map((item,i) => (
+<div key={i} style={{marginBottom:10,padding:“10px 14px”,background:`${d.color}0D`,borderRadius:6,borderLeft:`2px solid ${d.color}40`}}>
+<div style={{fontSize:13,color:C.text,lineHeight:1.5,marginBottom:4}}>
+<span style={{color:d.color,fontWeight:600,marginRight:8,fontFamily:“monospace”,fontSize:10}}>{String(i+1).padStart(2,“0”)}</span>{item.t}
+</div>
+<div style={{fontSize:10.5,color:C.muted,lineHeight:1.5,paddingLeft:28}}>{item.e}</div>
+</div>
+))}
+
+  </div>);
+}
+
+function Ikigai() {
+const [active, setActive] = useState(“ikigai”);
+const allSections = […Object.keys(DATA), …INTERSECTIONS.map(i=>i.key), “ikigai”];
+const stats = { conversations: “70+”, quadrantItems: Object.values(DATA).reduce((a,d)=>a+d.items.length,0), intersections: 4, uniqueFactors: IKIGAI.factors.length };
+
+return (
+<div style={{minHeight:“100vh”,background:C.bg,color:C.text,fontFamily:”‘Inter’,-apple-system,sans-serif”,overflow:“auto”}}>
+<style>{`@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap'); @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}} *{box-sizing:border-box;margin:0;padding:0} ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#333;border-radius:3px}`}</style>
+
+```
+  <div style={{maxWidth:900,margin:"0 auto",padding:"32px 16px 48px"}}>
+    {/* Header */}
+    <div style={{textAlign:"center",marginBottom:8}}>
+      <div style={{fontSize:10,fontWeight:700,color:C.muted,fontFamily:"monospace",letterSpacing:"0.2em",marginBottom:8}}>
+        MY IKIGAI — DANI — {stats.conversations} CONVERSATIONS ANALYZED
+      </div>
+      <h1 style={{fontSize:32,fontWeight:800,background:`linear-gradient(135deg,${C.love},${C.good},${C.need},${C.paid})`,WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",marginBottom:6,lineHeight:1.1}}>
+        The Builder-Teacher
+      </h1>
+      <div style={{fontSize:13,color:C.muted,maxWidth:560,margin:"0 auto",lineHeight:1.5}}>
+        Professor · CTO · Patent Holder · Hardware Hacker · AI Whisperer · Educator · Tarot Reader · Future Belizean
+      </div>
+      <div style={{display:"flex",justifyContent:"center",gap:16,marginTop:12,flexWrap:"wrap"}}>
+        {[
+          [`${stats.quadrantItems}`, "items mapped"],
+          [`${stats.intersections}`, "intersections"],
+          [`${stats.uniqueFactors}`, "unique factors"],
+          ["22+", "years shipping"],
+        ].map(([n,l],i) => (
+          <div key={i} style={{textAlign:"center"}}>
+            <div style={{fontSize:18,fontWeight:800,color:C.ikigai,fontFamily:"monospace"}}>{n}</div>
+            <div style={{fontSize:9,color:C.muted,fontFamily:"monospace",letterSpacing:"0.05em"}}>{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div style={{margin:"16px auto",maxWidth:420}}>
+      <Diagram active={active} setActive={setActive}/>
+    </div>
+
+    {/* Nav pills */}
+    <div style={{display:"flex",flexWrap:"wrap",gap:6,justifyContent:"center",marginBottom:16}}>
+      {Object.entries(DATA).map(([k,d]) => (
+        <button key={k} onClick={()=>setActive(active===k?null:k)} style={{background:active===k?d.color+"22":"transparent",border:`1px solid ${active===k?d.color:"#333"}`,color:active===k?d.color:C.muted,padding:"5px 12px",borderRadius:20,fontSize:10,fontWeight:600,fontFamily:"monospace",cursor:"pointer",transition:"all 0.2s",letterSpacing:"0.05em"}}>{d.emoji} {d.label.split(" ").slice(-1)[0]}</button>
+      ))}
+      {INTERSECTIONS.map(i => (
+        <button key={i.key} onClick={()=>setActive(active===i.key?null:i.key)} style={{background:active===i.key?i.color+"22":"transparent",border:`1px solid ${active===i.key?i.color:"#333"}`,color:active===i.key?i.color:C.muted,padding:"5px 12px",borderRadius:20,fontSize:10,fontWeight:600,fontFamily:"monospace",cursor:"pointer",transition:"all 0.2s",letterSpacing:"0.05em"}}>{i.label}</button>
+      ))}
+      <button onClick={()=>setActive("ikigai")} style={{background:active==="ikigai"?C.ikigai+"22":"transparent",border:`1px solid ${active==="ikigai"?C.ikigai:"#333"}`,color:active==="ikigai"?C.ikigai:C.muted,padding:"5px 12px",borderRadius:20,fontSize:10,fontWeight:700,fontFamily:"monospace",cursor:"pointer",transition:"all 0.2s",letterSpacing:"0.05em"}}>{"★"} IKIGAI</button>
+    </div>
+
+    <div style={{background:C.card,borderRadius:12,border:"1px solid #2a2a35",minHeight:200,overflow:"hidden"}}>
+      <Panel section={active}/>
+    </div>
+
+    {/* Footer */}
+    <div style={{textAlign:"center",marginTop:24,padding:"16px",fontSize:11,color:C.muted,fontFamily:"monospace",lineHeight:1.8}}>
+      <span style={{color:C.ikigai}}>TL;DR</span> {"→"} I build the system, harden the system, deploy the system,<br/>
+      teach 30 students to build their own, read tarot about the timing,<br/>
+      mix an espresso martini, and plan the move to Belize.<br/>
+      <span style={{opacity:0.5}}>That's not a job title. That's an ikigai.</span>
+    </div>
+  </div>
+</div>
+```
+
+);
+}
+
+const root = ReactDOM.createRoot(document.getElementById(“root”));
+root.render(<Ikigai />);
+</script>
+
+</body>
+</html>
