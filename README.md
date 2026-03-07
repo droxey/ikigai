@@ -107,6 +107,7 @@ I’ve been lucky enough to work across a lot of domains — architecting infras
 ### 🎯 Vocation (Paid For ∩ Needs)
 
 The projects I’m most excited about come from problems I’ve actually experienced. Team Vault started because I kept struggling to save web content for my repos. BumpBand came from wanting a simpler way to exchange contacts in person. FieldOps grew out of watching students struggle with the gap between tutorials and real work. I’m not sure any of these will be huge — but they’re honest attempts to solve real problems I care about
+
 -----
 
 *Built from 70+ AI conversations · Still figuring it out. But it feels like an ikigai.*
