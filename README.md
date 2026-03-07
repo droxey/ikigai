@@ -1,8 +1,19 @@
-# My Ikigai: The Builder-Teacher
 
-**Dani Roxberry** · Professor · CTO · Patent Holder · Hardware Hacker · AI Whisperer · Dog Parent · Massachusetts
+# ⭐ Danu's Ikigai: The Builder-Teacher
 
-> I build production systems, harden them, teach others to ship their own — and maybe someday do it from somewhere warm
+I’ve spent 22+ years building things and 7 of those years teaching others to build things too. Somewhere along the way, I picked up hardware prototyping, infrastructure, AI tooling, and a deep love for making complex topics approachable. I try to build real things, teach from experience, and share what I learn openly. I’m still figuring a lot of it out — but I think the combination of making and teaching is where I’m happiest and most useful.
+
+**What I think makes this work:**
+
+- I’ve been fortunate to work across hardware, software, infrastructure, education, AI, and prompt engineering
+- 22 years of shipping code and 7 years of teaching it gave me a library of content I’m still learning how to share effectively
+- I prototype at the edges (BumpBand, OpenClaw agents, AI avatars) and teach from the center (Docker, Go, Security, Django)
+- I spend a lot of time thinking about how to get the most out of AI tools — PRISM, Claude Code configs, token optimization
+- Distributed infrastructure + remote curriculum + Caribbean daydreams = slowly building toward location independence
+- Every product I’m exploring comes from a problem I’ve actually experienced firsthand
+- I try to write the way I talk — direct, encouraging, and focused on getting things shipped
+- I enjoy wearing a lot of hats — building starter apps, deploying infrastructure, designing curriculum, and helping people prepare for interviews
+
 
 ## ❤️‍🔥 What I Love
 
@@ -96,25 +107,7 @@ I’ve been lucky enough to work across a lot of domains — architecting infras
 
 ### 🎯 Vocation (Paid For ∩ Needs)
 
-The projects I’m most excited about come from problems I’ve actually experienced. Team Vault started because I kept struggling to save web content for my repos. BumpBand came from wanting a simpler way to exchange contacts in person. FieldOps grew out of watching students struggle with the gap between tutorials and real work. I’m not sure any of these will be huge — but they’re honest attempts to solve real problems I care about.
-
------
-
-## ⭐ My Ikigai: The Builder-Teacher
-
-I’ve spent 22+ years building things and 7 of those years teaching others to build things too. Somewhere along the way, I picked up hardware prototyping, infrastructure, AI tooling, and a deep love for making complex topics approachable. I try to build real things, teach from experience, and share what I learn openly. I’m still figuring a lot of it out — but I think the combination of making and teaching is where I’m happiest and most useful.
-
-**What I think makes this work:**
-
-- I’ve been fortunate to work across hardware, software, infrastructure, education, AI, and prompt engineering
-- 22 years of shipping code and 7 years of teaching it gave me a library of content I’m still learning how to share effectively
-- I prototype at the edges (BumpBand, OpenClaw agents, AI avatars) and teach from the center (Docker, Go, Security, Django)
-- I spend a lot of time thinking about how to get the most out of AI tools — PRISM, Claude Code configs, token optimization
-- Distributed infrastructure + remote curriculum + Caribbean daydreams = slowly building toward location independence
-- Every product I’m exploring comes from a problem I’ve actually experienced firsthand
-- I try to write the way I talk — direct, encouraging, and focused on getting things shipped
-- I enjoy wearing a lot of hats — building starter apps, deploying infrastructure, designing curriculum, and helping people prepare for interviews
-
+The projects I’m most excited about come from problems I’ve actually experienced. Team Vault started because I kept struggling to save web content for my repos. BumpBand came from wanting a simpler way to exchange contacts in person. FieldOps grew out of watching students struggle with the gap between tutorials and real work. I’m not sure any of these will be huge — but they’re honest attempts to solve real problems I care about
 -----
 
 *Built from 70+ AI conversations · Still figuring it out. But it feels like an ikigai.*
