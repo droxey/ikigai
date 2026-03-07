@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Ikigai — Dani (The Builder-Teacher)</title>
-<meta name="description" content="My interactive Ikigai chart — what I love, what I'm good at, what the world needs, and what I get paid for.">
+<meta name="description" content="My interactive Ikigai chart — what I love, what I do well, what the world needs, and what I can be paid for.">
 <meta property="og:title" content="My Ikigai — Dani (The Builder-Teacher)">
-<meta property="og:description" content="My interactive Ikigai chart — what I love, what I'm good at, what the world needs, and what I get paid for.">
+<meta property="og:description" content="Interactive Ikigai chart built from 70+ AI conversations, mapping 22+ years across hardware, software, infrastructure, education, and AI.">
 <meta property="og:type" content="website">
 <style>
   html, body, #root { margin: 0; padding: 0; min-height: 100vh; background: #0F0F14; }
@@ -36,34 +36,36 @@ love: {
 label: “What I LOVE”, color: C.love, emoji: “❤️‍🔥”,
 items: [
 { t: “Teaching & mentoring students hands-on”, e: “7 years at Dominican, 90 NPS at Make School, open-source curriculum at @Tech-at-DU, reveal-md lesson plans with emoji-prefixed agendas” },
-{ t: “Building distributed infrastructure from scratch”, e: “4-node Docker Swarm across Chicago/Seattle/LA/NY + France watchdog, CapRover portal, Prometheus/Grafana/Loki full-stack observability” },
+{ t: “Building distributed infrastructure from scratch”, e: “4-node Docker Swarm across Chicago/Seattle/LA/NY + France watchdog, CapRover portal, Prometheus/Grafana/Loki observability, Cloudflare tunnels, restic→Backblaze B2 backups, Uptime Kuma + Gatus external monitoring” },
 { t: “Hardware tinkering — ESP32, XIAO nRF52, ZimaBoard, Ender 3”, e: “BumpBand firmware prototyping (BLE+NFC hybrid), droxeybot 3D printer, Arduino experiments, physical hardware lab at Make School” },
-{ t: “AI agent systems — deploying, securing, orchestrating”, e: “OpenClaw security-maximal deployment with Squid proxy + Docker sandboxing, Ansible monitoring roles, 875-line observability role” },
+{ t: “AI agent systems — deploying, securing, orchestrating”, e: “OpenClaw security-maximal deployment (Squid egress proxy, Docker sandboxing, capability dropping, DM pairing codes), Ansible monitoring roles (875 lines), AgentAdventure skill (AI agents as WorkAdventure avatars)” },
 { t: “Prompt engineering & shaping LLM behavior”, e: “Created PRISM v2.2 methodology (24K char system prompt), token optimization research (38% reduction), progressive autonomy strategies from Anthropic research” },
-{ t: “Organizing hackathons & building virtual worlds”, e: “Week-long hackathons via Tech at DU, WorkAdventure + LiveKit for 50 concurrent users, custom pixel-art icons, security-hardened CapRover one-click apps” },
-{ t: “Open source tooling & DevOps automation”, e: “143 GitHub repos, 769 stars, 315 followers, CapRover one-click apps for WorkAdventure, awesome-teachcode” },
-{ t: “Tarot, astrology & spiritual practice”, e: “Daily draws with natal chart integration (Sag↑ Cancer☉ Scorpio☽), sexual tarot (Manera deck), past/present/future spreads, deep 1st house stellium analysis” },
-{ t: “Craft cocktails & culinary exploration”, e: “Dark espresso martini reverse-engineered from Cucina 38, Licor 43 Chocolate variant optimization, RAW rolling papers expertise” },
-{ t: “The Belize dream — Ambergris Caye island life”, e: “Property research, QRP residency program analysis, Mudi travel router + Starlink for remote work, detailed relocation planning” },
-{ t: “Gaming & playful tech”, e: “Pokémon GO search filter mastery (complete 2026 cheat sheet), WorkAdventure 16-bit virtual spaces, gamified student engagement” },
-{ t: “Lifestyle exploration & human connection”, e: “Swinger lifestyle, BumpBand born from ‘tech that works at the pool — no phone required’, belief that technology should connect not isolate” },
-{ t: “macOS power-user automation”, e: “Expert Hazel developer — binary plist predicate debugging, complex file organization rule systems, Aiphone intercom setup” },
-{ t: “Optimizing tools to their absolute limit”, e: “Claude Code config: 5-layer CLAUDE.md architecture, token-efficient prompts, rules/skills/hooks system, progressive autonomy tiers, settings.json allowedTools” },
+{ t: “Organizing hackathons & building virtual worlds”, e: “Week-long hackathons via Tech at DU, WorkAdventure + LiveKit for 50 concurrent users (migrated from Jitsi — 3 deployment versions, each more hardened), custom pixel-art icons, CapRover one-click apps” },
+{ t: “Open source tooling & DevOps automation”, e: “Personal repos: awesome-teachcode (17★), droxeybot (10★), muteme (5★), goslackit (5★), captools (4★), litebrite (4★), docsify-course (4★), spacepretzel (3★). Teaching repos at @Tech-at-DU: ACS-4220-AI-Engineering, ACS-3230-Capture-the-Flag, ACS-3320-Web-Design, ACS-2330-Responsive-Web-Design, d3-tutorial, React-Express-Tutorial, js-practice” },
+{ t: “Tarot, astrology & spiritual practice”, e: “Daily draws with natal chart integration (Sag↑ Cancer☉ Scorpio☽), past/present/future spreads, deep 1st house stellium analysis” },
+{ t: “Craft cocktails & home cooking”, e: “Dark espresso martini reverse-engineered from Cucina 38 (North Attleboro), Licor 43 Chocolate variant optimization, Ninja Combi kitchen experiments” },
+{ t: “Dreaming about the Caribbean”, e: “Exploring what it takes to work remotely from the islands — Starlink, travel routers, residency programs, and honest conversations about whether it’s realistic” },
+{ t: “Gaming, puzzles & playful tech”, e: “Pokémon GO daily player (built a complete 2026 search filter cheat sheet), Word Jumble solver, WorkAdventure 16-bit virtual spaces for gamified student engagement” },
+{ t: “Lifestyle exploration & human connection”, e: “BumpBand born from ‘tech that works at the pool — no phone required’, a belief that technology should connect people face-to-face, not isolate them behind screens” },
+{ t: “macOS power-user automation”, e: “Hazel developer — binary plist predicate debugging, complex file organization rule systems, Aiphone intercom setup” },
+{ t: “Dog parent & settling into a new home in Massachusetts”, e: “Moved from Bay Area to North Attleborough, MA — setting up Xfinity, Aiphone intercom, new furniture from Cardi’s, Dogtopia and Petco vet visits for my pup” },
+{ t: “Optimizing tools to their absolute limit”, e: “Claude Code: 5-layer CLAUDE.md architecture, modular rules/skills/hooks, progressive autonomy tiers, allowedTools config. Hazel: binary plist debugging. Grain: built a Go CLI exporter. reveal-md + Docsify for teaching. Warp terminal themes.” },
 ],
 },
 good: {
 label: “What I’m GOOD AT”, color: C.good, emoji: “🔧”,
 items: [
-{ t: “22+ years full-stack engineering across 10+ languages”, e: “Python, Go, C#, PHP, Django, .NET, React, Node, Bash — LinkedIn testimonials cite ‘picks up abandoned codebases in unfamiliar stacks and ships’” },
+{ t: “22+ years full-stack engineering across 10+ languages”, e: “Python, Go, C#, PHP, Django, .NET, React, Node, Bash — UC Berkeley grad, CTO at FrameBuzz, Lead Technology Officer at Make School, Lecturer at Dominican University” },
 { t: “Docker Swarm architecture & container orchestration”, e: “4×8GB nodes with placement constraints, overlay networking, CapRover app deployments, volume management, service health checks” },
 { t: “Security auditing & defense-in-depth hardening”, e: “25-finding Go audit (grain-exporter: 54 test functions, 1240 lines of test code), OpenClaw hardening (capability dropping, Squid egress proxy, sandbox isolation), WorkAdventure security scan” },
-{ t: “Full-stack observability engineering”, e: “Prometheus + Grafana + Loki deployment guides, Promtail agent configs per node, node_exporter + cAdvisor, 7 alert rules, firewall-restricted metric endpoints, restic→B2 backup orchestration” },
+{ t: “Full-stack observability engineering”, e: “Prometheus + Grafana + Loki deployment, Promtail per node, node_exporter + cAdvisor, 7 alert rules, firewall-restricted endpoints, restic→B2 backups, Uptime Kuma from France as external canary, Gatus public status page” },
 { t: “Hardware prototyping — firmware to product design”, e: “BumpBand: XIAO nRF52840 + BLE 5.0 + NFC hybrid, accelerometer bump detection, magnetic pogo-pin charging, 3 SKU tiers ($49/$79/$89), resort partnership channel strategy” },
-{ t: “Translating complex tech into teachable curriculum”, e: “Docker/DevOps (Bash→containers→compose→swarm), Go course (types→templates→files→MakeUtility), Web Security (social eng→server vulns→crypto→CTF), prefix trees with step-by-step trace walkthroughs” },
-{ t: “Patent-holder & product inventor”, e: “Live streaming patent (2014) — predicted Facebook Live/Twitch/YouTube interaction patterns. FrameBuzz, IMAX rebrand, Washington Commanders NFL app” },
+{ t: “Translating complex tech into teachable curriculum”, e: “Docker/DevOps (Bash→containers→compose→swarm), Go (types→templates→files→MakeUtility), Web Security (social eng→server vulns→crypto→CTF), Advanced Web Patterns (WebSockets, payment gateways, serverless), Python data structures (linked lists, merge sort, prefix trees, AVL trees) — all with reveal-md slides and Docsify course sites” },
+{ t: “Patent-holder & product inventor”, e: “Live streaming patent via FrameBuzz — predicted interaction patterns that became standard on Facebook Live, Twitch, and YouTube” },
 { t: “AI toolchain mastery — from prompts to agents”, e: “PRISM methodology (example-driven > adjective-driven), Claude Code 5-layer config architecture, progressive autonomy tiers, OpenClaw skill development, AI avatar pipeline design” },
-{ t: “Curriculum-as-product design”, e: “FieldOps Django job simulator (8 tickets, PR-based grading, Skool platform), backlog with acceptance criteria tighter than most actual companies, $997 cohort pricing model” },
-{ t: “Resume writing & interview system design”, e: “Created 12-question scored interview rubrics with make-or-break analysis, rewrote resumes that reposition 25-year careers for new roles, candidate strength/risk assessment frameworks” },
+{ t: “Curriculum-as-product design”, e: “FieldOps Django job simulator (8 tickets, PR-based grading, Skool platform), backlog modeled after how real engineering teams work, $997 cohort pricing model” },
+{ t: “Resume writing & interview system design”, e: “Created 12-question scored interview rubrics with make-or-break analysis, rewrote resumes that reposition careers for new roles, candidate strength/risk assessment frameworks” },
+{ t: “Resourceful with money and tools”, e: “Budget-conscious RackNerd VPS hosting (waits for sales), eBay selling (iPad Air M2 bundle with custom listing graphics), Apple ecosystem power user (MacBook Pro M5, tracks AAPL stock), .coach domain research for personal brand” },
 { t: “Writing voice that actually engages”, e: “‘Ship all the things!’ energy, coach-like directness, emoji headers, active verbs, curiosity-driven vibe — consistently across 7 years of course materials and GitHub READMEs” },
 ],
 },
@@ -76,10 +78,11 @@ items: [
 { t: “SaaS: Team Vault (developer knowledge management)”, e: “5-capability bundle: web capture + markdown conversion + GitHub integration + prompt injection firewall + MCP gateway. Market at intersection of $6.4B dev tools + $13.7B knowledge mgmt + $7B AI agent infra” },
 { t: “Hardware: BumpBand (waterproof contact exchange)”, e: “~$25 BOM, 3 SKU tiers, resort/event partnership channel, NFC fallback for non-owners, companion app for contact management — ‘people I’ve met’ timeline” },
 { t: “FieldOps job simulator cohorts on Skool”, e: “Django + HTMX curriculum, PR-based grading, $997-1,497/cohort × 8-15 students = $48K-$132K/yr. Hybrid model: cohort fee + $99/mo alumni access” },
-{ t: “Infrastructure consulting (Docker/DevOps/monitoring)”, e: “CapRover deployment expertise, full observability stack design, security hardening, backup orchestration — the entire stack I run daily” },
+{ t: “Infrastructure consulting (Docker/DevOps/monitoring)”, e: “CapRover deployment expertise, full observability stack design, security hardening, backup orchestration — tools and patterns I use daily in my own infrastructure” },
 { t: “AI agent deployment & security services”, e: “OpenClaw defense-in-depth patterns, security audit methodology (25-finding audits), sandbox isolation, egress filtering, DM pairing code systems” },
 { t: “Patent licensing — live streaming technology”, e: “Predicted live streaming interaction patterns in 2014 before Facebook Live, Twitch interactive, and YouTube existed in current form” },
 { t: “Prompt engineering consulting”, e: “PRISM methodology, token optimization (38% reduction with maintained accuracy), Claude Code configuration architecture, progressive autonomy design” },
+{ t: “Reselling & side income”, e: “eBay listings with custom product photography and graphics (iPad Air M2 bundle), Apple ecosystem buy/sell/trade, budget-optimized infrastructure ($3/mo B2 backups, $25/yr VPS nodes)” },
 { t: “Technical interview design & hiring consultation”, e: “Scored rubrics with make-or-break analysis, LinkedIn/resume deep-dive methodology, candidate risk assessment, role-specific question banks” },
 ],
 },
@@ -102,36 +105,36 @@ items: [
 
 const INTERSECTIONS = [
 { key: “passion”, label: “PASSION”, between: [“love”, “good”], color: C.passion,
-insight: “Building and teaching infrastructure isn’t a job — it’s my craft. I deploy a 4-city Docker Swarm for fun, then write the curriculum that teaches students to do it. I reverse-engineer espresso martini recipes with the same systematic rigor I apply to security audits. The common thread: I’m compulsively driven to understand systems deeply and then optimize them to their limit — whether that system is a container orchestrator, a tarot spread, or a Claude Code configuration.”,
-evidence: “WorkAdventure LiveKit migration (3 versions, each more hardened) • PRISM v2.2 evolved through 5+ iterations • BumpBand architecture refined from ESP32 to XIAO nRF52840 based on BLE+NFC hybrid analysis • Espresso martini: 3 recipe iterations from base to Cucina 38 reverse-engineer to Licor 43 Chocolate variant”
+insight: “I genuinely enjoy building things and then figuring out how to teach others to build them too. Whether it’s deploying infrastructure, tinkering with hardware, or dialing in a cocktail recipe — I tend to approach everything with the same curiosity and care. I just like understanding how things work, and I get a lot of satisfaction from sharing what I learn.”,
+evidence: “WorkAdventure LiveKit migration (Jitsi→LiveKit, 3 versions, each more hardened) • PRISM v2.2 evolved through 5+ iterations • BumpBand architecture refined from ESP32 to XIAO nRF52840 • Espresso martini: 3 recipe iterations • grain-exporter: 54 test functions across 2 security audits • Hazel rules: debugged binary plist predicates to fix file sorting logic”
 },
 { key: “mission”, label: “MISSION”, between: [“love”, “need”], color: C.mission,
-insight: “Making complex technology human. My hackathons put students in a video game world to code together. BumpBand replaces phone fumbling at a pool with a wrist bump. My courses anchor every topic to a destination project so students always know where they’re headed. My tarot readings blend astrological precision with practical advice (‘not yet — let it blend longer’). Everything I love doing is in service of connection: person to person, person to machine, student to mastery.”,
+insight: “I care a lot about making technology feel human and approachable. My hackathons put students in a video game world to code together. BumpBand tries to replace phone fumbling with a simple wrist bump. My courses anchor every topic to a destination project so students can see where they’re headed. I think the best technology brings people together rather than isolating them.”,
 evidence: “‘Ship all the things!’ teaching philosophy • WorkAdventure: ‘16-bit virtual space to hold student interest longer’ • BumpBand: ‘tech that works at the pool — no phone required’ • Course design: ‘every topic links to the final project so you can see where you’re headed’”
 },
 { key: “profession”, label: “PROFESSION”, between: [“good”, “paid”], color: C.profession,
-insight: “I’m the rare engineer who can architect a distributed Swarm, security-audit the Go codebase running on it, write the Ansible playbook that monitors it, prototype the hardware that connects to it, design the curriculum that teaches it, AND create the interview rubric that hires the next person to maintain it. That stack of capabilities isn’t a resume — it’s a moat. Most people specialize. I went wide AND deep across hardware, software, infrastructure, education, and AI. The LinkedIn testimonials say it: ‘picks up abandoned codebases in unfamiliar stacks and ships.’”,
-evidence: “UC Berkeley → industry (FrameBuzz patent, IMAX, NFL) → Make School (90 NPS) → Dominican (7 years) • 143 repos across Python, Go, C#, PHP, Django, .NET, React, Node, Bash • grain-exporter: 54 test functions, 1240 lines of test code, Dockerized, MIT licensed • FieldOps: production-quality Django starter with backlog ‘tighter than most actual companies’”
+insight: “I’ve been lucky enough to work across a lot of domains — architecting infrastructure, auditing codebases, prototyping hardware, writing curriculum, building interview systems. Most people specialize, and I respect that. I just happened to go wide and deep, and I’m grateful the dots connected. I try to bring that breadth to everything I build and teach.”,
+evidence: “UC Berkeley → FrameBuzz (CTO) → Make School (Lead Technology Officer) → Dominican (7 years) • Top personal repos: awesome-teachcode (17★), droxeybot (10★), muteme, goslackit, captools • Tech-at-DU curriculum: ACS-4220-AI-Engineering, ACS-3230-Capture-the-Flag, ACS-3320-Web-Design, ACS-2330-Responsive-Web-Design, d3-tutorial”
 },
 { key: “vocation”, label: “VOCATION”, between: [“paid”, “need”], color: C.vocation,
-insight: “Every product I’m building solves a gap I’ve personally lived. Team Vault exists because I couldn’t save interesting web content for my repos safely. BumpBand exists because I wanted to exchange contacts at the pool without a phone. FieldOps exists because my students needed a bridge between tutorials and production. Online courses exist because my university is closing my program. I’m not chasing trends — I’m scratching decade-old itches with the full weight of 22 years of engineering behind them.”,
-evidence: “Team Vault: ‘I have trouble saving all the interesting stuff I find for my project repositories’ • BumpBand: born from my resort experience • FieldOps: ‘No Django starter app in the repo. Students will burn Week 0-1 on boilerplate.’ • Online courses: ‘My university is closing my program. I have 7 years of content.’”
+insight: “The projects I’m most excited about come from problems I’ve actually experienced. Team Vault started because I kept struggling to save web content for my repos. BumpBand came from wanting a simpler way to exchange contacts in person. FieldOps grew out of watching students struggle with the gap between tutorials and real work. I’m not sure any of these will be huge — but they’re honest attempts to solve real problems I care about.”,
+evidence: “Team Vault: ‘I have trouble saving all the interesting stuff I find for my project repositories’ • BumpBand: born from wanting simpler contact exchange in person • FieldOps: ‘Students will burn Week 0-1 on boilerplate’ • Online courses: ‘My university is closing my program. I have 7 years of content.’ • grain-exporter: needed to bulk-download meeting recordings, so I built the tool”
 },
 ];
 
 const IKIGAI = {
 niche: “The Builder-Teacher”,
-tagline: “I build production systems, harden them, teach others to ship their own — and do it from the pool in Belize.”,
-description: “My niche sits at an intersection almost nobody occupies. I can solder an ESP32, deploy a Docker Swarm across 4 cities, security-audit a Go codebase, read a natal chart with technical precision, optimize Claude’s behavior at the token level, prototype a hardware product with 3 SKU tiers and resort partnership strategy, reverse-engineer an espresso martini recipe, and then turn ALL of it into a course that a student can actually follow. I’m not an academic who theorizes. I’m not a builder who hoards knowledge. I’m not a lifestyle optimizer who doesn’t ship. I’m all three — and I’ve got the patent, the 143 repos, the 7 years of curriculum, and the Ambergris Caye property deed to prove it.”,
+tagline: “I build production systems, harden them, teach others to ship their own — and maybe someday do it from somewhere warm.”,
+description: “I’ve spent 22+ years building things and 7 of those years teaching others to build things too. Somewhere along the way, I picked up hardware prototyping, infrastructure, AI tooling, and a deep love for making complex topics approachable. I try to build real things, teach from experience, and share what I learn openly. I’m still figuring a lot of it out — but I think the combination of making and teaching is where I’m happiest and most useful.”,
 factors: [
-“Hardware + Software + Infrastructure + Education + AI + Prompt Engineering — almost nobody spans all six”,
-“22 years shipping code + 7 years teaching it + patent portfolio = a content library and credibility stack most educators would kill for”,
+“I’ve been fortunate to work across hardware, software, infrastructure, education, AI, and prompt engineering”,
+“22 years of shipping code and 7 years of teaching it gave me a library of content I’m still learning how to share effectively”,
 “I prototype at the edges (BumpBand, OpenClaw agents, AI avatars) and teach from the center (Docker, Go, Security, Django)”,
-“PRISM methodology + Claude Code 5-layer config + progressive autonomy = I don’t just use AI tools, I engineer their behavior”,
-“Property in Belize + distributed infrastructure + remote curriculum = I’m building a location-independent tech empire, not just a career”,
-“Every product solves MY problem first (Team Vault, BumpBand, FieldOps, online courses) — founder-market fit is absolute”,
-“My writing voice (‘Ship all the things!’) is genuinely distinctive — a brand asset, not just a personality trait”,
-“I interview-prep candidates AND build the Django starter apps AND deploy the infrastructure AND teach the curriculum — I’m the full stack of a tech education company in one person”,
+“I spend a lot of time thinking about how to get the most out of AI tools — PRISM, Claude Code configs, token optimization”,
+“Distributed infrastructure + remote curriculum + Caribbean daydreams = slowly building toward location independence”,
+“Every product I’m exploring comes from a problem I’ve actually experienced firsthand”,
+“I try to write the way I talk — direct, encouraging, and focused on getting things shipped”,
+“I enjoy wearing a lot of hats — building starter apps, deploying infrastructure, designing curriculum, and helping people prepare for interviews”,
 ],
 };
 
@@ -238,7 +241,7 @@ return (
         The Builder-Teacher
       </h1>
       <div style={{fontSize:13,color:C.muted,maxWidth:560,margin:"0 auto",lineHeight:1.5}}>
-        Professor · CTO · Patent Holder · Hardware Hacker · AI Whisperer · Educator · Tarot Reader · Future Belizean
+        Professor · CTO · Patent Holder · Hardware Hacker · AI Whisperer · Educator · Dog Parent · Massachusetts
       </div>
       <div style={{display:"flex",justifyContent:"center",gap:16,marginTop:12,flexWrap:"wrap"}}>
         {[
@@ -278,8 +281,8 @@ return (
     <div style={{textAlign:"center",marginTop:24,padding:"16px",fontSize:11,color:C.muted,fontFamily:"monospace",lineHeight:1.8}}>
       <span style={{color:C.ikigai}}>TL;DR</span> {"→"} I build the system, harden the system, deploy the system,<br/>
       teach 30 students to build their own, read tarot about the timing,<br/>
-      mix an espresso martini, and plan the move to Belize.<br/>
-      <span style={{opacity:0.5}}>That's not a job title. That's an ikigai.</span>
+      and mix an espresso martini.<br/>
+      <span style={{opacity:0.5}}>Still figuring it out. But it feels like an ikigai.</span>
     </div>
   </div>
 </div>
