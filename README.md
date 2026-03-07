@@ -1,5 +1,4 @@
-
-# ⭐ Danu's Ikigai: The Builder-Teacher
+# ⭐ Dani's Ikigai: The Builder-Teacher
 
 I’ve spent 22+ years building things and 7 of those years teaching others to build things too. Somewhere along the way, I picked up hardware prototyping, infrastructure, AI tooling, and a deep love for making complex topics approachable. I try to build real things, teach from experience, and share what I learn openly. I’m still figuring a lot of it out — but I think the combination of making and teaching is where I’m happiest and most useful.
 
